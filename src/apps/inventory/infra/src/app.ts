@@ -1,10 +1,10 @@
 import * as cdk from 'aws-cdk-lib';
-import { InventoryApiStack } from './InventoryApiStack';
+import { ProductApiStack } from './ProductApiStack';
 import { Code } from 'aws-cdk-lib/aws-lambda';
 
 const app = new cdk.App();
 
-new InventoryApiStack(app, {
-  name: 'inventory-api',
+new ProductApiStack(app, {
+  name: 'product-api',
   code: Code.fromAsset('../dist/')
 });

@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "main": "src/index.ts",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.679.0",
+    "@aws-sdk/lib-dynamodb": "^3.679.0",
     "@middy/core": "^5.4.3",
     "@middy/http-content-negotiation": "^5.4.3",
     "@middy/http-cors": "^5.4.3",
     "@middy/http-error-handler": "^5.4.3",
     "@middy/http-header-normalizer": "^5.4.3",
     "@middy/http-json-body-parser": "^5.4.3",
+    "@middy/http-response-serializer": "^5.4.3",
     "@middy/http-router": "^5.4.3",
+    "@middy/http-urlencode-path-parser": "^5.4.3",
+    "aws-cdk-lib": "^2.164.1",
     "aws-lambda": "^1.0.7",
+    "common-utils": "workspace:*",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.140"
+    "@types/aws-lambda": "^8.10.140",
+    "@types/node": "^22.8.1",
+    "aws-cdk": "^2.164.1"
   }
 }

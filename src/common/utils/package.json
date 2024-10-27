@@ -1,0 +1,14 @@
+{
+    "name": "common-utils",
+    "version": "1.0.0",
+    "description": "common-utils",
+    "main": "src/index.ts",
+    "author": "Spafax",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.3"
+    }
+}

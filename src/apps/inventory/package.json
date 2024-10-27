@@ -15,6 +15,7 @@
     "@middy/http-json-body-parser": "^5.4.3",
     "@middy/http-router": "^5.4.3",
     "common-aws": "workspace:*",
+    "common-utils": "workspace:*",
     "esbuild": "^0.23.0",
     "typescript": "^5.5.3"
   }

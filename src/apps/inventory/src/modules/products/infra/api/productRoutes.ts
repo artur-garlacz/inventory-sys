@@ -1,10 +1,10 @@
-import { handleGetProductsQuery } from './handlers/handleGetProductsQuery';
+import { handleGetProductListQuery } from './handlers/handleGetProductListQuery';
 import { Route } from '@middy/http-router';
 
 export const productRoutes: Route<any, any>[] = [
   {
     method: 'GET',
     path: '/products',
-    handler: handleGetProductsQuery
+    handler: handleGetProductListQuery
   }
 ];
