@@ -1,8 +1,9 @@
 import * as cdk from 'aws-cdk-lib';
-import { ProductApiStack } from './ProductApiStack';
+import { ProductApiStack } from './stacks/ProductApiStack';
 import { Code } from 'aws-cdk-lib/aws-lambda';
+import { AppApp } from 'common-aws';
 
-const app = new cdk.App();
+const app = new AppApp({});
 
 new ProductApiStack(app, {
   name: 'product-api',
