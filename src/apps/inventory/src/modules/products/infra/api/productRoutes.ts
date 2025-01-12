@@ -1,3 +1,4 @@
+import { handleCreateProductCommand } from './handlers/handleCreateProductCommand';
 import { handleGetProductListQuery } from './handlers/handleGetProductListQuery';
 import { Route } from '@middy/http-router';
 
@@ -10,6 +11,6 @@ export const productRoutes: Route<any, any>[] = [
   {
     method: 'POST',
     path: '/products',
-    handler: handleGetProductListQuery
+    handler: handleCreateProductCommand
   }
 ];
