@@ -8,11 +8,10 @@ export interface Product extends Entity {
   price: number;
   sku: string;
   weight: number;
-  dimensions: any;
-  supplier: SupplierReference;
+  // dimensions: any;
+  // supplier: SupplierReference;
 }
-
 
 export const associateSupplierToProduct = (product: Product, supplier: SupplierReference) => {
-  product.supplier = supplier;
-}
+  // product.supplier = supplier;
+};

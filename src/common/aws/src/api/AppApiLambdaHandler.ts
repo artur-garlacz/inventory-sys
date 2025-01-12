@@ -7,9 +7,10 @@ import httpHeaderNormalizerMiddleware from '@middy/http-header-normalizer';
 import httpJsonBodyParserMiddleware from '@middy/http-json-body-parser';
 import httpRouterHandler from '@middy/http-router';
 import httpHeaderNormalizer from '@middy/http-header-normalizer';
+import type { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 export const apiLambdaHandler = ({ routes }: { routes: any[] }) =>
-  middy().use(httpHeaderNormalizer()).handler(httpRouterHandler(routes));
+  middy<APIGatewayProxyEvent, APIGatewayProxyResult>().use(httpHeaderNormalizer()).handler(httpRouterHandler(routes));
 // .use(httpUrlencodePathParametersParserMiddleware())
 // .use(httpJsonBodyParserMiddleware())
 // .use(httpErrorHandlerMiddleware())

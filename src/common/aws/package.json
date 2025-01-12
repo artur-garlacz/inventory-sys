@@ -14,10 +14,12 @@
     "@middy/http-response-serializer": "^5.4.3",
     "@middy/http-router": "^5.4.3",
     "@middy/http-urlencode-path-parser": "^5.4.3",
+    "awilix": "^12.0.4",
     "aws-cdk-lib": "^2.164.1",
     "aws-lambda": "^1.0.7",
     "common-utils": "workspace:*",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.140",

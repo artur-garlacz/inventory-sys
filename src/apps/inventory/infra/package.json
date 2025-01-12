@@ -20,6 +20,7 @@
     "typescript": "~5.4.5"
   },
   "dependencies": {
+    "common-aws": "workspace:*",
     "aws-cdk-lib": "2.147.1",
     "constructs": "^10.0.0"
   }
