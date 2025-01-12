@@ -2,17 +2,23 @@ import { Duration } from 'aws-cdk-lib';
 import { Cors } from 'aws-cdk-lib/aws-apigateway';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { AppApp, AppFunction, AppRestApi, AppStack, AppStackProps } from 'common-aws';
+import { ProductTable } from '../resources/ProductTable';
 
 export class ProductApiStack extends AppStack {
   constructor(scope: AppApp, props: AppStackProps) {
     super(scope, props);
+
+    const productsTable = new ProductTable(this);
 
     const lambda = new AppFunction(this, 'product-api-lambda', {
       timeout: Duration.seconds(15),
       memorySize: 128,
       runtime: Runtime.NODEJS_20_X,
       handler: 'index.productApiLambdaHandler',
-      code: props.code
+      code: props.code,
+      environment: {
+        TABLE_NAME: productsTable.tableName
+      }
     });
 
     const restApi = new AppRestApi(this, 'product-api-gateway', {

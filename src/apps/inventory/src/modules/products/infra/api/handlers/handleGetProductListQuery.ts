@@ -1,13 +1,6 @@
-import { getProductListQueryHandler } from '../../app/get-products/GetProductListQueryHandler';
+import { GetProductListQuery } from '../../../app/get-products/GetProductListQueryHandler';
+import { productRequestBuilder } from '../builders/productRequestBuilder';
 
-export const handleGetProductListQuery = async (event: any, context: any) => {
-  console.log('event', event);
-  console.log('context', context);
-
-  const body = await getProductListQueryHandler().handleAsync({});
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify(body)
-  };
-};
+export const handleGetProductListQuery = productRequestBuilder<GetProductListQuery>()
+  .withCommandHandler('getProductListQueryHandler')
+  .build();

@@ -1,4 +1,4 @@
-import { App, Stack, StackProps } from 'aws-cdk-lib';
+import { Stack, StackProps } from 'aws-cdk-lib';
 import { Code } from 'aws-cdk-lib/aws-lambda';
 import { AppApp } from './AppApp';
 

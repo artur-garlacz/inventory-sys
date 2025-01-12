@@ -1,5 +1,5 @@
 import { AwilixContainer } from 'awilix';
-import { ProxyIntegrationEvent, ProxyIntegrationResult } from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { Schema } from 'zod';
 
 import { requestMapper, RequestMapper } from './RequestMapper';
@@ -11,10 +11,10 @@ export type CommandHandlerBuilder<TCommand> = {
   withSchemaValidator(schema: Schema<TCommand | undefined>): CommandHandlerBuilder<TCommand>;
   withValidator(validatorName: string): CommandHandlerBuilder<TCommand>;
   withRequestMapping(
-    mappingFunc: (request: ProxyIntegrationEvent, mapper: RequestMapper) => TCommand | Partial<TCommand>
+    mappingFunc: (request: APIGatewayProxyEvent, mapper: RequestMapper) => TCommand | Partial<TCommand>
   ): CommandHandlerBuilder<TCommand>;
   withLogging(): CommandHandlerBuilder<TCommand>;
-  build(): (request: ProxyIntegrationEvent) => Promise<ProxyIntegrationResult>;
+  build(): (request: APIGatewayProxyEvent) => Promise<APIGatewayProxyResult>;
 };
 
 export const commandHandlerBuilder = <TCommand, TResponse = void>(
@@ -24,7 +24,7 @@ export const commandHandlerBuilder = <TCommand, TResponse = void>(
   let schemaToValidate: Schema<TCommand> | undefined = undefined;
   let commandValidatorName: string | undefined = undefined;
   let loggingEnabled = false;
-  let mappingFunction: (request: ProxyIntegrationEvent, mapper: RequestMapper) => TCommand | Partial<TCommand>;
+  let mappingFunction: (request: APIGatewayProxyEvent, mapper: RequestMapper) => TCommand | Partial<TCommand>;
 
   const withSchemaValidator = (schema: Schema<TCommand>) => {
     schemaToValidate = schema;
@@ -42,14 +42,14 @@ export const commandHandlerBuilder = <TCommand, TResponse = void>(
   };
 
   const withRequestMapping = (
-    func: (request: ProxyIntegrationEvent, mapper: RequestMapper) => TCommand | Partial<TCommand>
+    func: (request: APIGatewayProxyEvent, mapper: RequestMapper) => TCommand | Partial<TCommand>
   ) => {
     mappingFunction = func;
 
     return builder;
   };
 
-  const logObject = (text: string, objToLog: ValidationResult | ProxyIntegrationEvent | TCommand | TResponse) => {
+  const logObject = (text: string, objToLog: ValidationResult | APIGatewayProxyEvent | TCommand | TResponse) => {
     if (loggingEnabled) {
       console.log(`${text}: ${JSON.stringify(objToLog)}`);
     }
@@ -58,7 +58,7 @@ export const commandHandlerBuilder = <TCommand, TResponse = void>(
 
   const build =
     () =>
-    async (request: ProxyIntegrationEvent): Promise<ProxyIntegrationResult> => {
+    async (request: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
       const commandHandler = container.resolve<CommandHandler<TCommand, TResponse>>(commandHandlerName);
 
       logObject('Proxy event', request);

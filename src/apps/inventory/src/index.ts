@@ -1,3 +1,3 @@
-import { inventoryApiLambdaHandler } from './modules/products/api/inventoryApiLambdaHandler';
+import { productApiLambdaHandler } from './modules/products/infra/api/productApiLambdaHandler';
 
-export { inventoryApiLambdaHandler };
+export { productApiLambdaHandler };

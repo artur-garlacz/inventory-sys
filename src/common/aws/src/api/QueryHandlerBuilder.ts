@@ -1,5 +1,5 @@
 import { AwilixContainer } from 'awilix';
-import type { APIGatewayProxyEvent } from 'aws-lambda';
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { Schema } from 'zod';
 
 import { requestMapper, RequestMapper } from './RequestMapper';
@@ -14,7 +14,7 @@ export type QueryHandlerBuilder<TQuery> = {
     mappingFunc: (request: APIGatewayProxyEvent, mapper: RequestMapper) => TQuery
   ): QueryHandlerBuilder<TQuery>;
   withLogging(): QueryHandlerBuilder<TQuery>;
-  build(): (request: APIGatewayProxyEvent) => Promise<APIGatewayProxyEvent>;
+  build(): (request: APIGatewayProxyEvent) => Promise<APIGatewayProxyResult>;
 };
 
 export const queryHandlerBuilder = <TQuery, TResponse>(
@@ -57,7 +57,7 @@ export const queryHandlerBuilder = <TQuery, TResponse>(
 
   const build =
     () =>
-    async (request: APIGatewayProxyEvent): Promise<APIGatewayProxyEvent> => {
+    async (request: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
       const queryHandler = container.resolve<QueryHandler<TQuery, TResponse>>(queryHandlerName);
       logObject('Proxy event', request);
 

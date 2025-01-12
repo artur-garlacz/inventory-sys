@@ -2,7 +2,7 @@ import { AttributeType, ITable, StreamViewType, Table } from 'aws-cdk-lib/aws-dy
 import { Construct } from 'constructs';
 import { PRODUCT_TABLE_NAME } from '../common/ProductConstructNames';
 import { AppStack, AppTable } from 'common-aws';
-import { randomUUID } from 'crypto';
+import { generateId } from 'common-utils';
 
 export class ProductTable extends AppTable {
   public static fromStack(stack: AppStack): ITable {
@@ -12,7 +12,7 @@ export class ProductTable extends AppTable {
   }
 
   public static fromName(scope: Construct, name: string): ITable {
-    return Table.fromTableAttributes(scope, `${name}-ref-${randomUUID()}`, {
+    return Table.fromTableAttributes(scope, `${name}-ref-${generateId()}`, {
       tableName: name,
       globalIndexes: []
     });
