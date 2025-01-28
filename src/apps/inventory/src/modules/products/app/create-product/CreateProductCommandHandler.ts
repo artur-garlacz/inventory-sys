@@ -16,6 +16,7 @@ export const createProductCommandHandler = ({
   productFactory
 }: CreateProductCommandHandlerDeps): CreateProductCommandHandler => {
   const handleAsync = async (command: CreateProductCommand) => {
+    console.log(JSON.stringify(command));
     const product = productFactory.create(command);
 
     await productRepository.createOrUpdate(product);

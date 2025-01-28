@@ -2,5 +2,6 @@ import { GetProductListQuery } from '../../../app/get-products/GetProductListQue
 import { productRequestBuilder } from '../builders/productRequestBuilder';
 
 export const handleGetProductListQuery = productRequestBuilder<GetProductListQuery>()
-  .withCommandHandler('getProductListQueryHandler')
+  .withQueryHandler('getProductListQueryHandler')
+  .withLogging()
   .build();

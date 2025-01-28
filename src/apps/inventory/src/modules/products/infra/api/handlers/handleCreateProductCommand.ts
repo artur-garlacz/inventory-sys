@@ -3,4 +3,5 @@ import { productRequestBuilder } from '../builders/productRequestBuilder';
 
 export const handleCreateProductCommand = productRequestBuilder<GetProductListQuery>()
   .withCommandHandler('createProductCommandHandler')
+  .withLogging()
   .build();
