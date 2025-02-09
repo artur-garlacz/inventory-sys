@@ -21,6 +21,8 @@ export class ProductApiStack extends AppStack {
       }
     });
 
+    productsTable.grantReadWriteData(lambda);
+
     const restApi = new AppRestApi(this, 'product-api-gateway', {
       restApiName: 'product-api',
       deployOptions: {
