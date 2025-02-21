@@ -1,19 +1,15 @@
 import { Entity } from 'common-utils';
 
 export interface Pricing extends Entity {
+  name: string;
   basePrice: number;
   currency: string;
-  productReference: ProductReference;
-  tieredPricing?: TieredPricing;
+  tieredPricings?: CustomerTieredPricing[];
   discount?: {
     percentage?: number; // % off
     fixedAmount?: number; // Absolute discount (e.g., $5 off)
     validUntil?: string; // Expiration date for discount
   };
-}
-
-interface ProductReference {
-  productId: string;
 }
 
 export interface TieredPricing {
