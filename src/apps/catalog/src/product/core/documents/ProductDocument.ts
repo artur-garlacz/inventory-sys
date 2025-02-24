@@ -4,7 +4,7 @@ export interface ProductDocument {
   id: string;
   name: string;
   description: string;
-  price: number;
+  sku: string;
 }
 
 export const mapProductToProductDocument = (product: Product): ProductDocument => {

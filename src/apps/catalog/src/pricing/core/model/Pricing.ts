@@ -3,7 +3,6 @@ import { Entity } from 'common-utils';
 export interface Pricing extends Entity {
   name: string;
   basePrice: number;
-  currency: string;
   tieredPricings?: CustomerTieredPricing[];
   discount?: {
     percentage?: number; // % off
