@@ -1,7 +1,7 @@
 import { Duration } from 'aws-cdk-lib';
 import { Cors } from 'aws-cdk-lib/aws-apigateway';
 import { Runtime } from 'aws-cdk-lib/aws-lambda';
-import { AppApp, AppFunction, AppRestApi, AppStack, AppStackProps } from 'common-aws';
+import { AppApp, AppFunction, AppRestApi, AppStack, AppStackProps, OpenSearchService } from 'common-aws';
 import { ProductTable } from '../resources/ProductTable';
 
 export class ProductApiStack extends AppStack {
@@ -20,6 +20,13 @@ export class ProductApiStack extends AppStack {
         TABLE_NAME: productsTable.tableName
       }
     });
+
+    const aossConstruct = new OpenSearchService(this, 'OpenSearchConstruct', {
+      role: lambda.functionArn,
+      collectionName: 'product'
+    });
+
+    aossConstruct.searchDomain;
 
     productsTable.grantReadWriteData(lambda);
 
