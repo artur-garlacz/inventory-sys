@@ -2,20 +2,33 @@ import { Entity } from 'common-utils';
 import { Pricing } from '../../../pricing/core/model/Pricing';
 
 export interface Product extends Entity {
-  name: string;
   description: string;
+  category: string;
+  brand?: string;
+  attributes?: Record<string, string | number | boolean>;
   pricing?: ProductPricingReference;
   sku: string;
   weight: number;
   status: ProductStatus;
-  // dimensions: any;
-  // supplier: SupplierReference;
+  images?: ProductImage[];
+  dimensions?: ProductDimension;
 }
 
 export interface ProductPricingReference {
   basePrice: number;
   name: string;
   id: string;
+}
+
+interface ProductDimension {
+  width: number;
+  height: number;
+  depth: number;
+}
+
+interface ProductImage {
+  alt: string;
+  url: string;
 }
 
 export enum ProductStatus {

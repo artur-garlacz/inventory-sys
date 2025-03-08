@@ -5,9 +5,9 @@ export interface Pricing extends Entity {
   basePrice: number;
   tieredPricings?: CustomerTieredPricing[];
   discount?: {
-    percentage?: number; // % off
-    fixedAmount?: number; // Absolute discount (e.g., $5 off)
-    validUntil?: string; // Expiration date for discount
+    percentage?: number;
+    fixedAmount?: number;
+    validUntil?: string;
   };
 }
 

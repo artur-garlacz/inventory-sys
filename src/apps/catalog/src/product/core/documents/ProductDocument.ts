@@ -1,4 +1,4 @@
-import { Product } from '../models/Product';
+import { Product } from '../model/Product';
 
 export interface ProductDocument {
   id: string;

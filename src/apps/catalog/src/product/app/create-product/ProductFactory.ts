@@ -1,5 +1,5 @@
 import { generateId } from 'common-utils';
-import { Product, ProductStatus } from '../../core/models/Product';
+import { Product, ProductStatus } from '../../core/model/Product';
 
 export interface ProductFactory {
   create(data: CreateProductDto): Product;

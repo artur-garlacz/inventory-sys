@@ -1,6 +1,6 @@
 import { CommandHandler } from 'common-aws';
 import { ProductRepository } from '../../core/repository/ProductRepository';
-import { setPricingToProduct } from '../../core/models/Product';
+import { setPricingToProduct } from '../../core/model/Product';
 import { Pricing } from '../../../pricing/core/model/Pricing';
 
 type SetPricingToProductCommand = {
